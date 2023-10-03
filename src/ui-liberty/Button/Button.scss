@@ -1,0 +1,12 @@
+@import "../../scss/mixins";
+
+.button {
+  @include action_effect;
+  @include flex_center;
+  padding: 10px;
+  background-color: #7cb342;
+  box-shadow: 0px 10px 36px -16px rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  height: auto;
+  width: auto;
+}

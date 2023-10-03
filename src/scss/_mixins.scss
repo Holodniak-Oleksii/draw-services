@@ -1,0 +1,17 @@
+@mixin action_effect {
+  @media (hover: hover) {
+    transition: all 0.4s ease;
+    &:hover {
+      filter: brightness(80%);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+@mixin flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
