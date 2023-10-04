@@ -29,6 +29,8 @@
     border-bottom: 1px solid #7cb342;
     border-top: 1px solid #7cb342;
     width: 100%;
+    position: relative;
+    background-color: rgb(255, 255, 255);
     @media (hover: hover) {
       cursor: pointer;
     }
