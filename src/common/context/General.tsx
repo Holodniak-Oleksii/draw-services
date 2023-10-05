@@ -6,7 +6,10 @@ export const GeneralContext = createContext<IGeneralContext>({
   diagram: null,
   selectedZoom: 100,
   setSelectedZoom: () => {},
-  treeData: [],
+  tree: [],
+  setTree: () => {},
+  count: { categories: 0, id: 0 },
+  setCount: () => {},
 });
 
 export const useGeneralContext = () =>

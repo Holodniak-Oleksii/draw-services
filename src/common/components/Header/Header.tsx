@@ -4,7 +4,7 @@ import { useGeneralContext } from "../../context/General";
 import { IconFocusCentered } from "../../icons";
 import "./Header.scss";
 const Header = () => {
-  const { diagram, canvas, selectedZoom } = useGeneralContext();
+  const { diagram, canvas, selectedZoom, count } = useGeneralContext();
 
   const handlerZoom = (zoom: number) => {
     const diagramEL = diagram?.current?.style;
@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <div className='header__logo'>Services.</div>
+      <div className='header__logo'>Categories {count.categories}</div>
       <div className='header__controls'>
         <Button onClick={centeredDiagram}>
           <IconFocusCentered />

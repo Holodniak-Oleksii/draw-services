@@ -1,10 +1,10 @@
 import { ITree } from "./common/types/general";
 
-export const treeData: ITree[] = [
+export const initialTree: ITree[] = [
   {
-    id: 1,
+    id: 0,
     value: "categories",
-    hierarchy: 1,
+    hierarchy: 0,
     children: [],
   },
 ];

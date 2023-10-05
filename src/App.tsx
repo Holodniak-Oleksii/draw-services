@@ -1,12 +1,18 @@
 import { useRef, useState } from "react";
 import { DrawingCanvas, Header } from "./common/components";
 import { GeneralContext } from "./common/context/General";
-import { treeData } from "./data";
+import { ICount, ITree } from "./common/types/general";
+import { initialTree } from "./data";
 
 function App() {
   const canvas = useRef<HTMLDivElement>(null);
   const diagram = useRef<HTMLDivElement>(null);
   const [selectedZoom, setSelectedZoom] = useState<number>(100);
+  const [tree, setTree] = useState<ITree[]>(initialTree);
+  const [count, setCount] = useState<ICount>({
+    categories: 0,
+    id: 0,
+  });
 
   return (
     <GeneralContext.Provider
@@ -14,8 +20,11 @@ function App() {
         canvas,
         diagram,
         selectedZoom,
-        treeData,
+        tree,
+        setTree,
         setSelectedZoom,
+        count,
+        setCount,
       }}
     >
       <Header />

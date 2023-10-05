@@ -4,7 +4,7 @@ import Tree from "../Tree/Tree";
 import "./DrawingCanvas.scss";
 
 const DrawingCanvas = () => {
-  const { canvas, selectedZoom } = useGeneralContext();
+  const { canvas } = useGeneralContext();
   const [isDragging, setIsDragging] = useState(false);
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
@@ -51,7 +51,7 @@ const DrawingCanvas = () => {
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [canvas?.current, selectedZoom, isDragging]);
+  }, [canvas?.current, isDragging]);
 
   return (
     <div className='canvas'>

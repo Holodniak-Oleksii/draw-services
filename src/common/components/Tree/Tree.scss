@@ -21,7 +21,7 @@
     text-align: center;
     list-style-type: none;
     position: relative;
-    padding: 20px 70px 0 10px;
+    padding: 20px 10px 0 10px;
     transition: all 0.5s;
     &::before,
     &::after {
@@ -54,6 +54,10 @@
       border-right: 1px solid #949494;
     }
   }
+  &__flex {
+    @include flex_center;
+    gap: 8px;
+  }
   &__value {
     min-width: 60px;
     padding: 8px 16px;
@@ -63,22 +67,21 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    display: inline-block;
     position: relative;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition: all 0.5s;
     background-color: #a8a8a8;
-    &_1 {
+    &_0 {
       color: #191919;
       background-color: #fff;
       border: 1px dashed #ccc;
       font-weight: 700;
       text-transform: capitalize;
     }
-    &_2 {
+    &_1 {
       background-color: #ffa275;
     }
-    &_3 {
+    &_2 {
       background-color: #6a76e2;
     }
   }
@@ -86,11 +89,11 @@
 
 .controls {
   gap: 8px;
-  position: absolute;
+  // position: absolute;
   @include flex_center;
-  top: 50%;
-  right: 0;
-  transform: translate(calc(100% + 4px), -50%);
+  // top: 50%;
+  // right: 0;
+  // transform: translate(calc(100% + 4px), -50%);
   button {
     @include flex_center;
     border-radius: 50%;

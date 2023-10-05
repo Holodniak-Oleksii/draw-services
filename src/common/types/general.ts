@@ -4,3 +4,8 @@ export interface ITree {
   hierarchy: number;
   children?: ITree[];
 }
+
+export interface ICount {
+  categories: number;
+  id: number;
+}
