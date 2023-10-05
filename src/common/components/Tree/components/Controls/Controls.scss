@@ -1,0 +1,48 @@
+@import "../../../../../scss/mixins";
+
+.controls {
+  gap: 8px;
+  @include flex_center;
+  // position: absolute;
+  position: relative;
+  z-index: 2;
+  &__button {
+    @include flex_center;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    padding: 1px;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: fit-content;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+    @media (hover: hover) {
+      &:hover {
+        filter: brightness(80%);
+      }
+    }
+  }
+  &__add {
+    background: gold;
+  }
+  &__check {
+    background: rgb(1, 198, 1);
+  }
+  &__edit {
+    background: #6a76e2;
+  }
+  &__remove {
+    background: red;
+    svg {
+      transform: translate(-50%, -50%) scale(0.5) rotate(45deg);
+    }
+  }
+}

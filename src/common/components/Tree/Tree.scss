@@ -56,7 +56,13 @@
   }
   &__flex {
     @include flex_center;
+    position: relative;
+    z-index: 10;
+    transform: translateX(36px);
     gap: 8px;
+    &_0 {
+      transform: translateX(14px);
+    }
   }
   &__value {
     min-width: 60px;
@@ -68,6 +74,8 @@
     font-weight: 400;
     line-height: 20px;
     position: relative;
+    word-break: break-all;
+    min-width: 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition: all 0.5s;
     background-color: #a8a8a8;
@@ -83,56 +91,6 @@
     }
     &_2 {
       background-color: #6a76e2;
-    }
-  }
-}
-
-.controls {
-  gap: 8px;
-  // position: absolute;
-  @include flex_center;
-  // top: 50%;
-  // right: 0;
-  // transform: translate(calc(100% + 4px), -50%);
-  button {
-    @include flex_center;
-    border-radius: 50%;
-    transition: all 0.4s ease;
-    padding: 1px;
-    width: 16px;
-    height: 16px;
-    position: relative;
-    svg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: fit-content;
-    }
-    &:active {
-      transform: scale(0.95);
-    }
-    @media (hover: hover) {
-      &:hover {
-        filter: brightness(80%);
-      }
-    }
-  }
-  &__add {
-    background: gold;
-    svg {
-      transform: translate(-50%, -50%) scale(0.5);
-    }
-  }
-  &__edit {
-    background: #6a76e2;
-    svg {
-      transform: translate(-50%, -50%) scale(0.5);
-    }
-  }
-  &__remove {
-    background: red;
-    svg {
-      transform: translate(-50%, -50%) scale(0.5) rotate(45deg);
     }
   }
 }

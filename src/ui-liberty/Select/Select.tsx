@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useGeneralContext } from "../../common/context/General";
+import { useOutSideClick } from "../../common/hooks/useOutSideClick/useOutSideClick";
 import { IconMinus, IconPlus } from "../../common/icons";
 import Button from "../Button/Button";
 import "./Select.scss";
@@ -7,6 +8,8 @@ import "./Select.scss";
 const Select = () => {
   const { selectedZoom, setSelectedZoom } = useGeneralContext();
   const [open, setOpen] = useState<boolean>(false);
+  const selectRef = useRef<HTMLDivElement>(null);
+  useOutSideClick([selectRef], () => setOpen(false));
 
   const handlerIncrement = () => {
     setSelectedZoom((prev) => (prev < 150 ? (prev += 10) : prev));
@@ -21,10 +24,8 @@ const Select = () => {
   };
 
   const handlerChooseZoom = (number: number) => {
-    return () => {
-      setSelectedZoom(number);
-      setOpen(false);
-    };
+    setSelectedZoom(number);
+    setOpen(false);
   };
 
   const renderOptions = () => {
@@ -36,7 +37,7 @@ const Select = () => {
           className={`select__item ${
             number === selectedZoom && "select__item_active"
           }`}
-          onClick={handlerChooseZoom(number)}
+          onClick={() => handlerChooseZoom(number)}
         >
           {number}
         </div>
