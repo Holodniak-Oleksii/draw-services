@@ -8,8 +8,27 @@ const Select = () => {
   const { selectedZoom, setSelectedZoom } = useGeneralContext();
   const [open, setOpen] = useState<boolean>(false);
 
+  const handlerIncrement = () => {
+    setSelectedZoom((prev) => (prev < 150 ? (prev += 10) : prev));
+  };
+
+  const handlerDecrement = () => {
+    setSelectedZoom((prev) => (prev > 10 ? (prev -= 10) : prev));
+  };
+
+  const handlerOpen = () => {
+    setOpen(!open);
+  };
+
+  const handlerChooseZoom = (number: number) => {
+    return () => {
+      setSelectedZoom(number);
+      setOpen(false);
+    };
+  };
+
   const renderOptions = () => {
-    return [...Array(15)].map((x, i) => {
+    return [...Array(15)].map((_, i) => {
       const number = (i + 1) * 10;
       return (
         <div
@@ -17,10 +36,7 @@ const Select = () => {
           className={`select__item ${
             number === selectedZoom && "select__item_active"
           }`}
-          onClick={() => {
-            setSelectedZoom(number);
-            setOpen(false);
-          }}
+          onClick={handlerChooseZoom(number)}
         >
           {number}
         </div>
@@ -30,26 +46,18 @@ const Select = () => {
 
   return (
     <div className='select'>
-      <Button
-        onClick={() =>
-          setSelectedZoom((prev) => (prev < 150 ? (prev += 10) : prev))
-        }
-      >
+      <Button onClick={handlerIncrement}>
         <IconPlus />
       </Button>
       <div className='select__drop'>
-        <button className='select__value' onClick={() => setOpen(!open)}>
+        <button className='select__value' onClick={handlerOpen}>
           {selectedZoom}
         </button>
         <div className={`select__list ${open && "select__list_open"}`}>
           {renderOptions()}
         </div>
       </div>
-      <Button
-        onClick={() =>
-          setSelectedZoom((prev) => (prev > 10 ? (prev -= 10) : prev))
-        }
-      >
+      <Button onClick={handlerDecrement}>
         <IconMinus />
       </Button>
     </div>

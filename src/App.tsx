@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { DrawingCanvas, Header } from "./common/components";
 import { GeneralContext } from "./common/context/General";
+import { treeData } from "./data";
 
 function App() {
   const canvas = useRef<HTMLDivElement>(null);
@@ -13,6 +14,7 @@ function App() {
         canvas,
         diagram,
         selectedZoom,
+        treeData,
         setSelectedZoom,
       }}
     >

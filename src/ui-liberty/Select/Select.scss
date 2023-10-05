@@ -11,7 +11,7 @@
   }
   &__item {
     @include flex_center;
-    padding: 10px;
+    padding: 6px 10px;
     border-bottom: 1px solid #f3f3f3;
     @media (hover: hover) {
       transition: background-color 0.4s ease;
@@ -26,8 +26,8 @@
   }
   &__value {
     height: 100%;
-    border-bottom: 1px solid #7cb342;
-    border-top: 1px solid #7cb342;
+    border-bottom: 1px solid #6a76e2;
+    border-top: 1px solid #6a76e2;
     width: 100%;
     position: relative;
     background-color: rgb(255, 255, 255);
