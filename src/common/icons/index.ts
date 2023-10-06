@@ -1,3 +1,4 @@
+export { default as IconArrow } from "./IconArrow";
 export { default as IconCheck } from "./IconCheck";
 export { default as IconFocusCentered } from "./IconFocusCentered";
 export { default as IconMinus } from "./IconMinus";

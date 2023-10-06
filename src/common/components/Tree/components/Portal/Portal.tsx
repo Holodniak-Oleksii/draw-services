@@ -21,6 +21,7 @@ const Portal: FC<IPortal> = (props) => {
         className='portal__input'
         placeholder={isEditable ? "Change category name" : "Category name"}
         required
+        autoFocus
       />
       <div className='portal__buttons'>
         <Button

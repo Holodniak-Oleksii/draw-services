@@ -21,7 +21,7 @@
     text-align: center;
     list-style-type: none;
     position: relative;
-    padding: 20px 10px 0 10px;
+    padding: 20px 0 0 0;
     transition: all 0.5s;
     &::before,
     &::after {
@@ -55,27 +55,26 @@
     }
   }
   &__flex {
-    @include flex_center;
     position: relative;
     z-index: 10;
-    transform: translateX(36px);
     gap: 8px;
+    @include flex_center;
+    padding: 0 10px;
+    transform: translateX(36px);
     &_0 {
       transform: translateX(14px);
     }
   }
   &__value {
-    min-width: 60px;
-    padding: 8px 16px;
-    max-width: 200px;
+    min-width: 120px;
+    padding: 8px;
+    max-width: 140px;
     color: #ffffff;
     @include flex_center;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
-    line-height: 20px;
-    position: relative;
+    line-height: 18px;
     word-break: break-all;
-    min-width: 100px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition: all 0.5s;
     background-color: #a8a8a8;

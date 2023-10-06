@@ -1,13 +1,38 @@
 import { useEffect, useState } from "react";
 import { useGeneralContext } from "../../context/General";
+import { IconArrow } from "../../icons";
 import Tree from "../Tree/Tree";
 import "./DrawingCanvas.scss";
-
+const DISTANCE = 50;
 const DrawingCanvas = () => {
   const { canvas } = useGeneralContext();
   const [isDragging, setIsDragging] = useState(false);
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
+
+  const onDirectionMove = (id: number) => {
+    if (canvas?.current) {
+      const left = canvas.current.style.left;
+      const top = canvas.current.style.top;
+      const x = +left.slice(0, left.length - 2);
+      const y = +top.slice(0, top.length - 2);
+
+      switch (id) {
+        case 0:
+          canvas.current.style.top = `${y + DISTANCE}px`;
+          break;
+        case 1:
+          canvas.current.style.left = `${x - DISTANCE}px`;
+          break;
+        case 2:
+          canvas.current.style.top = `${y - DISTANCE}px`;
+          break;
+        case 3:
+          canvas.current.style.left = `${x + DISTANCE}px`;
+          break;
+      }
+    }
+  };
 
   const handleMouseDown = (e: MouseEvent) => {
     setIsDragging(true);
@@ -53,8 +78,21 @@ const DrawingCanvas = () => {
     };
   }, [canvas?.current, isDragging]);
 
+  const renderArrows = () => {
+    return [...Array(4)].map((_, i) => (
+      <button
+        className={`canvas__arrow canvas__arrow_${i}`}
+        onClick={() => onDirectionMove(i)}
+        key={i}
+      >
+        <IconArrow />
+      </button>
+    ));
+  };
+
   return (
     <div className='canvas'>
+      {renderArrows()}
       <div className='canvas__container' ref={canvas}>
         <Tree />
       </div>
