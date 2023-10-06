@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  z-index: 2;
+  z-index: 20;
 
   &__logo {
     color: gold;
@@ -20,5 +20,16 @@
     justify-content: flex-end;
     align-items: center;
     gap: 16px;
+  }
+  @media screen and (max-width: 767px) {
+    &__logo {
+      font-size: 22px;
+    }
+  }
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+    &__logo {
+      font-size: 18px;
+    }
   }
 }

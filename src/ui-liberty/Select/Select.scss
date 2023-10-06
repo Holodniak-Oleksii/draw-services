@@ -3,6 +3,8 @@
 .select {
   display: flex;
   align-items: stretch;
+  position: relative;
+  z-index: 3;
   &__drop {
     width: 120px;
     font-size: 14px;

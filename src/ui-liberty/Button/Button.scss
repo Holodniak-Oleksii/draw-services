@@ -9,4 +9,7 @@
   font-size: 14px;
   height: auto;
   width: auto;
+  @media screen and (max-width: 767px) {
+    padding: 4px;
+  }
 }
