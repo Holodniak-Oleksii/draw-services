@@ -1,6 +1,8 @@
 @import "../../../scss/mixins";
 
 .tree {
+  transform-origin: center;
+  display: flex;
   &__space {
     padding-top: 30px;
     position: relative;

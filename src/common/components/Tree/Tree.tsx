@@ -26,7 +26,11 @@ const Tree = () => {
     );
   };
 
-  return <div ref={diagram}>{renderTree(tree)}</div>;
+  return (
+    <div className='tree' ref={diagram}>
+      {renderTree(tree)}
+    </div>
+  );
 };
 
 export default Tree;
