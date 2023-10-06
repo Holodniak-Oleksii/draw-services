@@ -4,6 +4,7 @@
   gap: 8px;
   @include flex_center;
   position: relative;
+  pointer-events: all;
   z-index: 2;
   &__button {
     @include flex_center;

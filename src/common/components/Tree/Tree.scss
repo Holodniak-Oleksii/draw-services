@@ -19,6 +19,7 @@
   &__item {
     float: left;
     text-align: center;
+    pointer-events: none;
     list-style-type: none;
     position: relative;
     padding: 20px 0 0 0;
