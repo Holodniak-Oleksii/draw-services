@@ -46,7 +46,7 @@ const Select = () => {
   };
 
   return (
-    <div className='select'>
+    <div className='select' ref={selectRef}>
       <Button onClick={handlerIncrement}>
         <IconPlus />
       </Button>
