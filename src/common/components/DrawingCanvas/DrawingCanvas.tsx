@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGeneralContext } from "../../context/General";
 import { IconArrow } from "../../icons";
 import Tree from "../Tree/Tree";
 import "./DrawingCanvas.scss";
 const DISTANCE = 50;
 const DrawingCanvas = () => {
-  const { canvas } = useGeneralContext();
+  const { canvas, diagram, selectedZoom, setSelectedZoom } =
+    useGeneralContext();
+  const fieldRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
@@ -33,13 +35,28 @@ const DrawingCanvas = () => {
       }
     }
   };
+  const handleMouseWheel = (e: WheelEvent) => {
+    if (diagram?.current) {
+      setSelectedZoom((prev) => {
+        if (prev === 10 && e.deltaY > 0) {
+          return prev;
+        } else if (prev === 150 && e.deltaY < 0) {
+          return prev;
+        } else {
+          const newZoom = prev + (e.deltaY > 0 ? -10 : 10);
+          return Math.max(10, Math.min(150, newZoom));
+        }
+      });
+    }
+  };
 
   const handleMouseDown = (e: MouseEvent) => {
     setIsDragging(true);
     const rect = canvas?.current?.getBoundingClientRect();
-    if (rect) {
+    if (rect && canvas?.current) {
       setOffsetX(e.clientX - rect.left);
       setOffsetY(e.clientY - rect.top + 80);
+      canvas.current.style.cursor = "grabbing";
     }
   };
 
@@ -53,16 +70,28 @@ const DrawingCanvas = () => {
 
   const handleMouseUp = () => {
     setIsDragging(false);
+    if (canvas?.current) {
+      canvas.current.style.cursor = "grab";
+    }
   };
 
   const handleMouseLeave = () => {
     if (isDragging) {
       setIsDragging(false);
+      if (canvas?.current) {
+        canvas.current.style.cursor = "grab";
+      }
     }
   };
 
   useEffect(() => {
     const canvasEL = canvas?.current;
+    const fieldEL = fieldRef?.current;
+
+    if (fieldEL) {
+      fieldEL.addEventListener("wheel", handleMouseWheel);
+    }
+
     if (canvasEL) {
       canvasEL.addEventListener("mousedown", handleMouseDown);
       document.addEventListener("mousemove", handleMouseMove);
@@ -72,6 +101,7 @@ const DrawingCanvas = () => {
 
     return () => {
       canvasEL?.removeEventListener("mousedown", handleMouseDown);
+      fieldEL?.removeEventListener("wheel", handleMouseWheel);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mouseleave", handleMouseLeave);
@@ -91,7 +121,7 @@ const DrawingCanvas = () => {
   };
 
   return (
-    <div className='canvas'>
+    <div className='canvas' ref={fieldRef}>
       {renderArrows()}
       <div className='canvas__container' ref={canvas}>
         <Tree />

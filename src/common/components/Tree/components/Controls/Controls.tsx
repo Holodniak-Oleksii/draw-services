@@ -48,11 +48,16 @@ const Controls: FC<IControls> = (props) => {
   };
 
   const removeBranch = () => {
-    setTree((prev) => {
-      const updatedTree = [...prev];
-      findAndRemoveBranch(updatedTree, branch.id, setCount);
-      return updatedTree;
-    });
+    let exactly = window.confirm(
+      "Are you sure you want to delete this branch?"
+    );
+    if (exactly) {
+      setTree((prev) => {
+        const updatedTree = [...prev];
+        findAndRemoveBranch(updatedTree, branch.id, setCount);
+        return updatedTree;
+      });
+    }
   };
 
   return (
