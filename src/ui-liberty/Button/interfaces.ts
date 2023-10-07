@@ -1,3 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
 
-export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+  theme?: "filled" | "outlined";
+}

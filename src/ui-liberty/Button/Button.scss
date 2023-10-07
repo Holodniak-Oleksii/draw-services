@@ -4,12 +4,23 @@
   @include action_effect;
   @include flex_center;
   padding: 10px;
-  background-color: #6a76e2;
-  box-shadow: 0px 10px 36px -16px rgba(0, 0, 0, 0.75);
   font-size: 14px;
   height: auto;
   width: auto;
   @media screen and (max-width: 767px) {
     padding: 4px;
+  }
+  &__filled {
+    background-color: #6a76e2;
+    border: 1px solid transparent;
+    color: #fff;
+  }
+  &__outlined {
+    border: 1px solid #6a76e2;
+    color: #6a76e2;
+  }
+  &:disabled {
+    filter: brightness(150%);
+    pointer-events: none;
   }
 }

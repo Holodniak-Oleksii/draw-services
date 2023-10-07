@@ -5,8 +5,7 @@ import Tree from "../Tree/Tree";
 import "./DrawingCanvas.scss";
 const DISTANCE = 50;
 const DrawingCanvas = () => {
-  const { canvas, diagram, selectedZoom, setSelectedZoom } =
-    useGeneralContext();
+  const { canvas, diagram, setSelectedZoom } = useGeneralContext();
   const fieldRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [offsetX, setOffsetX] = useState(0);

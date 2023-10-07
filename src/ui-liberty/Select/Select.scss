@@ -10,6 +10,12 @@
     font-size: 14px;
     height: auto;
     position: relative;
+    &_disable {
+      pointer-events: none;
+      .select__value {
+        color: #ccc;
+      }
+    }
   }
   &__item {
     @include flex_center;
@@ -32,7 +38,7 @@
     border-top: 1px solid #6a76e2;
     width: 100%;
     position: relative;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
     @media (hover: hover) {
       cursor: pointer;
     }

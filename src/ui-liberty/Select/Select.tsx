@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 import "./Select.scss";
 
 const Select = () => {
-  const { selectedZoom, setSelectedZoom } = useGeneralContext();
+  const { selectedZoom, setSelectedZoom, listView } = useGeneralContext();
   const [open, setOpen] = useState<boolean>(false);
   const selectRef = useRef<HTMLDivElement>(null);
   useOutSideClick([selectRef], () => setOpen(false));
@@ -47,10 +47,10 @@ const Select = () => {
 
   return (
     <div className='select' ref={selectRef}>
-      <Button onClick={handlerIncrement}>
+      <Button onClick={handlerIncrement} disabled={listView}>
         <IconPlus />
       </Button>
-      <div className='select__drop'>
+      <div className={`select__drop ${listView && "select__drop_disable"}`}>
         <button className='select__value' onClick={handlerOpen}>
           {selectedZoom}
         </button>
@@ -58,7 +58,7 @@ const Select = () => {
           {renderOptions()}
         </div>
       </div>
-      <Button onClick={handlerDecrement}>
+      <Button onClick={handlerDecrement} disabled={listView}>
         <IconMinus />
       </Button>
     </div>

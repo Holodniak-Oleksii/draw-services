@@ -10,4 +10,6 @@ export interface IGeneralContext {
   setTree: Dispatch<SetStateAction<ITree[]>>;
   count: ICount;
   setCount: Dispatch<SetStateAction<ICount>>;
+  listView: boolean;
+  setListView: Dispatch<SetStateAction<boolean>>;
 }

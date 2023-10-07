@@ -4,7 +4,8 @@ import { useGeneralContext } from "../../context/General";
 import { IconFocusCentered } from "../../icons";
 import "./Header.scss";
 const Header = () => {
-  const { diagram, canvas, selectedZoom, count } = useGeneralContext();
+  const { diagram, canvas, selectedZoom, count, listView, setListView } =
+    useGeneralContext();
 
   const handlerZoom = (zoom: number) => {
     const diagramEL = diagram?.current?.style;
@@ -38,14 +39,22 @@ const Header = () => {
   }, [selectedZoom]);
 
   useEffect(() => {
-    centeredDiagram();
-  }, []);
+    if (!listView) {
+      centeredDiagram();
+    }
+  }, [listView]);
 
   return (
     <div className='header'>
       <div className='header__logo'>Categories {count.categories}</div>
       <div className='header__controls'>
-        <Button onClick={centeredDiagram}>
+        <Button
+          theme={listView ? "filled" : "outlined"}
+          onClick={() => setListView(!listView)}
+        >
+          LIST VIEW
+        </Button>
+        <Button onClick={centeredDiagram} disabled={listView}>
           <IconFocusCentered />
         </Button>
         <Select />

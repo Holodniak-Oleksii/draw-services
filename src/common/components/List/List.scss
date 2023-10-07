@@ -1,0 +1,36 @@
+.list {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  overflow: auto;
+  &__item {
+    padding: 0 0 0 24px;
+  }
+  &__value {
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-all;
+    margin: 2px;
+    padding: 10px 10px 10px 20px;
+    min-width: 700px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #fff;
+    background-color: #a8a8a8;
+    &_nomore {
+      list-style: none;
+      pointer-events: none;
+    }
+    &_0 {
+      color: #191919;
+      background-color: #fff;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+    &_1 {
+      background-color: #ffa275;
+    }
+    &_2 {
+      background-color: #6a76e2;
+    }
+  }
+}

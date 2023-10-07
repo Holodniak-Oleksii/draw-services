@@ -10,6 +10,8 @@ export const GeneralContext = createContext<IGeneralContext>({
   setTree: () => {},
   count: { categories: 0, id: 0 },
   setCount: () => {},
+  listView: false,
+  setListView: () => {},
 });
 
 export const useGeneralContext = () =>

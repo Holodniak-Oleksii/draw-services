@@ -51,6 +51,7 @@ const Controls: FC<IControls> = (props) => {
     let exactly = window.confirm(
       "Are you sure you want to delete this branch?"
     );
+
     if (exactly) {
       setTree((prev) => {
         const updatedTree = [...prev];
